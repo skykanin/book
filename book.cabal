@@ -1,0 +1,42 @@
+cabal-version:      3.6
+name:               book
+version:            0.1.0.0
+synopsis:           Haskell language book
+description:
+  A guide to the Haskell programming language
+  for beginners.
+bug-reports:        https://github.com/skykanin/book/issues
+license:            GPL-3.0-or-later
+author:             skykanin
+maintainer:         3789764+skykanin@users.noreply.github.com
+
+copyright:          skykanin
+category:           book
+extra-source-files:
+  LICENSE.md
+  README.md
+
+source-repository head
+  type:     git
+  location: https://github.com/skykanin/book
+
+common shared-properties
+  default-language:   GHC2021
+  default-extensions: OverloadedStrings
+  ghc-options:        -Wall
+
+executable book
+    import:           shared-properties
+    main-is:          Main.hs
+
+    build-depends:    base ^>= 4.16.0.0
+                    , hakyll ^>= 4.15.1.1
+                    , pandoc ^>= 2.18
+
+    hs-source-dirs:   app
+    ghc-options:      -threaded
+
+library
+    import:           shared-properties
+    hs-source-dirs:   src
+    -- TODO: Declare modules as other or exposed?

@@ -5,13 +5,26 @@ body {
   @apply bg-red-400;
   @apply text-white;
   @apply font-sans;
+  @apply w-screen;
+  @apply h-screen;
 }
 
 #root {
-  @apply self-center;
+  @apply grid;
+  @apply grid-cols-4;
+  @apply grid-rows-6;
+  @apply justify-items-center;
 }
 
-h1 {
-  @apply text-3xl;
+#title {
+  @apply text-4xl;
   @apply font-bold;
+  @apply col-span-full;
+  @apply row-span-1;
+}
+
+#sidebar {
+  @apply col-span-1;
+  @apply row-start-2;
+  @apply row-end-auto;
 }

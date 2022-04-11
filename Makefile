@@ -1,14 +1,23 @@
-.PHONY : clean all
+.PHONY : all watch
 
-all: | clean watch
+watch: | watch-css watch-book
+
+all: | clean build
+
+install:
+	@npm install
 
 build:
-	@cabal build book
+	@npm run build:css
+	@cabal build exe:book
 
 clean:
 	@cabal run book clean
 
-watch:
+watch-css:
+	@npm run watch:css
+
+watch-book:
 	@cabal run book watch
 
 format:

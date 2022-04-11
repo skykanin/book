@@ -1,8 +1,17 @@
-@charset "utf-8";
+@tailwind base;
 
 html,
 body {
-  background-color: rgb(22, 25, 35);
-  color: white;
-  font-family: "Open Sans", sans-serif;
+  @apply bg-red-400;
+  @apply text-white;
+  @apply font-sans;
+}
+
+#root {
+  @apply self-center;
+}
+
+h1 {
+  @apply text-3xl;
+  @apply font-bold;
 }

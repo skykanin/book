@@ -27,3 +27,9 @@ cabal.project.local~
 .ghc.environment.*
 data/
 _*/
+
+# Ignore compiled css
+css/__*.css
+
+# Npm stuff
+node_modules/

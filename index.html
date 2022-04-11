@@ -5,14 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>The Haskell Programming Language</title>
-    <link rel="stylesheet" href="/css/global.css" />
+    <link href="/css/__global.css" rel="stylesheet">
   </head>
   <body>
-    <h1>The Haskell Programming Language</h1>
-    <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-      <div class="sidebar-scrollbox">
-        $partial("templates/pages-list.html")$
-      </div>
-    </nav>
+    <h1 class="text-3xl">The Haskell Programming Language</h1>
+    <div id="root">
+      <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+        <div class="sidebar-scrollbox">
+          $partial("templates/pages-list.html")$
+        </div>
+      </nav>
+    </div>
   </body>
 </html>

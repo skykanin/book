@@ -1,24 +1,171 @@
 @tailwind base;
 
+/* Website Theme */
+
+:root {
+  /* Heliotrope Gray */
+  --main-bg-color: #aa9fb1;
+  /* Purple Navy */
+  --secondary-bg-color: #4e5283;
+  /* Tuscany */
+  --main-fg-color: #cca7a2;
+  /* Mauve */
+  --secondary-fg-color: #d9bbf9;
+  /* Dark Blue Gray */
+  --alt-color: #7871aa;
+  /* Jet */
+  --jet: #323234;
+}
+
 html,
 body {
-  @apply bg-red-400;
-  @apply text-white;
+  @apply bg-dark-blue-gray;
+  @apply text-jet;
   @apply font-sans;
   @apply w-screen;
   @apply h-screen;
+  @apply font-semibold;
+  @apply m-0;
+  @apply outline-none;
+  @apply overflow-auto;
+  @apply touch-auto;
 }
+
+body {
+  scrollbar-color: var(--jet) var(--alt-color);
+}
+
+.page {
+  @apply grid;
+  @apply grid-cols-7;
+  @apply grid-rows-6;
+  @apply justify-items-center;
+}
+
+h1 {
+  @apply text-4xl;
+  @apply py-5;
+  @apply font-bold;
+}
+
+h2 {
+  @apply text-3xl;
+  @apply py-3;
+  @apply font-bold;
+}
+
+h3 {
+  @apply text-2xl;
+  @apply py-2;
+  @apply font-bold;
+}
+
+/* Center elements in the grid */
+article {
+  @apply col-span-full;
+  @apply sm:col-start-2;
+  @apply sm:col-end-7;
+  @apply 2xl:col-start-3;
+  @apply 2xl:col-end-6;
+  @apply row-span-full;
+  @apply p-2;
+}
+
+ul,
+ol {
+  @apply list-inside;
+  @apply my-1;
+}
+
+ul {
+  @apply list-disc;
+}
+
+ol {
+  @apply list-decimal;
+}
+
+li > ul,
+li > ol {
+  @apply ml-4;
+}
+
+p {
+  @apply py-2;
+}
+
+hr {
+  @apply h-1.5;
+  @apply my-4;
+  @apply bg-heliotrope-gray;
+  @apply border-heliotrope-gray;
+  @apply rounded;
+}
+
+div.sourceCode {
+  @apply rounded;
+  @apply p-2;
+  @apply font-medium;
+}
+
+blockquote {
+  @apply bg-tuscany;
+  @apply text-jet;
+  @apply border-l-8;
+  @apply border-mauve;
+  @apply px-2;
+  @apply rounded;
+}
+
+figure {
+  @apply my-8;
+  @apply block;
+  @apply grid;
+  @apply justify-items-center;
+}
+
+figure > img {
+  @apply max-w-md;
+}
+
+figure > figcaption {
+  @apply justify-self-start;
+}
+
+a {
+  @apply outline-none;
+  @apply text-dark-salmon;
+  @apply border-dark-salmon;
+  @apply border-solid;
+  @apply border-b-2;
+}
+
+a:link {
+}
+
+a:visited {
+  @apply text-crimson-ua;
+  @apply border-crimson-ua;
+}
+
+a:focus {
+  @apply bg-jet;
+}
+
+a:hover {
+  @apply bg-jet;
+}
+
+/* Frontpage */
 
 #root {
   @apply grid;
-  @apply grid-cols-4;
+  @apply grid-cols-7;
   @apply grid-rows-6;
   @apply justify-items-center;
 }
 
 #title {
-  @apply text-4xl;
-  @apply font-bold;
   @apply col-span-full;
   @apply row-span-1;
 }

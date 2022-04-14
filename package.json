@@ -5,13 +5,17 @@
   "main": "index.js",
   "scripts": {
     "build:css": "tailwind build -i css/global.css -o css/__global.css",
-    "watch:css": "tailwind -w -i css/global.css -o css/__global.css"
+    "watch:css": "tailwind build -w -i css/global.css -o css/__global.css"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/skykanin/book.git"
   },
-  "keywords": ["book", "haskell", "static"],
+  "keywords": [
+    "book",
+    "haskell",
+    "static"
+  ],
   "author": "skykanin",
   "license": "GPL-3.0-or-later",
   "bugs": {

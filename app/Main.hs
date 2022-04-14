@@ -2,7 +2,7 @@ module Main where
 
 import Data.Maybe (fromMaybe)
 import Hakyll
-import Text.Pandoc.Highlighting (Style, breezeDark, styleToCss)
+import Text.Pandoc.Highlighting (Style, zenburn, styleToCss)
 import Text.Pandoc.Options (WriterOptions (..))
 
 main :: IO ()
@@ -10,14 +10,19 @@ main = hakyll $ do
   -- Load all templates.
   match "templates/*" $ compile templateCompiler
 
+  -- Load all assets.
+  match "assets/*" $ do
+    route   idRoute
+    compile copyFileCompiler
+
   -- Create a stylesheet for syntax highlighting.
   create ["css/syntax.css"] $ do
     route idRoute
     compile $ do
       makeItem $ styleToCss pandocCodeStyle
 
-  -- Load all css files.
-  match "css/*" $ do
+  -- Load compiled tailwind css file.
+  match "css/__global.css" $ do
     route idRoute
     compile compressCssCompiler
 
@@ -56,7 +61,7 @@ getResourceMetadata iden =
   fromMaybe "No title" . lookupString "title" <$> getMetadata iden
 
 pandocCodeStyle :: Style
-pandocCodeStyle = breezeDark
+pandocCodeStyle = zenburn
 
 pandocCompiler' :: Compiler (Item String)
 pandocCompiler' =

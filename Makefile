@@ -12,6 +12,7 @@ build:
 	@cabal build exe:book
 
 clean:
+	rm css/__global.css 2>/dev/null
 	@cabal run book clean
 
 watch-css:

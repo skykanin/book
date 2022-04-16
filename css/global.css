@@ -11,15 +11,17 @@
   --main-fg-color: #cca7a2;
   /* Mauve */
   --secondary-fg-color: #d9bbf9;
-  /* Dark Blue Gray */
-  --alt-color: #7871aa;
+  /* Rebecca Purple */
+  --alt-color: #9c93de;
   /* Jet */
   --jet: #323234;
+  /* St. Patrick's Blue */
+  --st-patricks-blue: #222a68;
 }
 
 html,
 body {
-  @apply bg-dark-blue-gray;
+  @apply bg-rebecca-purple;
   @apply text-jet;
   @apply font-sans;
   @apply w-screen;
@@ -45,19 +47,16 @@ body {
 h1 {
   @apply text-4xl;
   @apply py-5;
-  @apply font-bold;
 }
 
 h2 {
   @apply text-3xl;
   @apply py-3;
-  @apply font-bold;
 }
 
 h3 {
   @apply text-2xl;
   @apply py-2;
-  @apply font-bold;
 }
 
 /* Center elements in the grid */
@@ -97,8 +96,8 @@ p {
 hr {
   @apply h-1.5;
   @apply my-4;
-  @apply bg-heliotrope-gray;
-  @apply border-heliotrope-gray;
+  @apply bg-mauve;
+  @apply border-mauve;
   @apply rounded;
 }
 
@@ -106,6 +105,13 @@ div.sourceCode {
   @apply rounded;
   @apply p-2;
   @apply font-medium;
+}
+
+p > code {
+  @apply text-mauve;
+  @apply bg-jet;
+  @apply rounded;
+  @apply p-0.5;
 }
 
 blockquote {
@@ -134,30 +140,38 @@ figure > figcaption {
 
 a {
   @apply outline-none;
-  @apply text-dark-salmon;
-  @apply border-dark-salmon;
+  @apply border-jet;
+}
+
+a[href^="https://"]
+{
+  @apply text-st-patricks-blue;
+  @apply border-st-patricks-blue;
   @apply border-solid;
   @apply border-b-2;
 }
 
-a:link {
+a:link[href^="https://"]
+{
+  @apply border-b-2;
 }
 
-a:visited {
-  @apply text-crimson-ua;
-  @apply border-crimson-ua;
-}
-
-a:focus {
-  @apply bg-jet;
+a:focus[href^="https://"]
+{
+  @apply bg-mauve;
 }
 
 a:hover {
-  @apply bg-jet;
+  @apply border-solid;
+  @apply border-b-2;
 }
 
-/* Frontpage */
+a:hover[href^="https://"]
+{
+  @apply bg-mauve;
+}
 
+/* Global */
 #root {
   @apply grid;
   @apply grid-cols-7;

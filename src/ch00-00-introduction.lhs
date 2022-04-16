@@ -16,7 +16,9 @@ Wow lets **look** at some code!
 > main :: IO ()
 > main = putStrLn "Hello World!"
 
-That's some *super* _slick_ code right there!
+Look at that `putStrLn` function! That's some *super* _slick_ code right there!
+
+Is workspace allowed?
 
 This is an unordered list:
 
@@ -37,4 +39,4 @@ here is some text
 
 ![NixOS Logo](https://nixos.org/logo/nixos-hires.png)
 
-My favorite search engine is [Duck Duck Go](https://duckduckgo.com).
+My favourite search engine is [Duck Duck Go](https://duckduckgo.com).

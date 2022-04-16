@@ -14,6 +14,8 @@
 
     nixpkgs.url =
       "github:nixos/nixpkgs?rev=bef07673d323a9c489a664ba7dee3dd10468a293";
+
+    # TODO: Provide HLS from their flake
   };
 
   outputs = { self, flake-compat, flake-utils, nixpkgs, ... }:
@@ -34,7 +36,7 @@
             pkgs.binutils-unwrapped
             pkgs.gnumake
             pkgs.nodejs-17_x
-            # TODO: Provide HLS from their flake
+            (pkgs.aspellWithDicts (d: [ d.en d.en-computers d.en-science ]))
             pkgs.hlint
             hs.ghc
             hs.cabal-install

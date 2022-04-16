@@ -165,9 +165,11 @@ a:hover {
   @apply justify-items-center;
 }
 
-#title {
+.navbar {
   @apply col-span-full;
   @apply row-span-1;
+  @apply flex;
+  @apply justify-center;
 }
 
 #sidebar {

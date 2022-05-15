@@ -18,7 +18,8 @@ clean:
 watch-css:
 	@npm run watch:css
 
-watch-book:
+watch-book: |
+	@cabal run book clean
 	@cabal run book watch
 
 format:

@@ -2,8 +2,10 @@ module Main where
 
 import Data.Maybe (fromMaybe)
 import Hakyll
-import Text.Pandoc.Highlighting (Style, zenburn, styleToCss)
+import Text.Pandoc.Definition (Block (..), Inline (..), Pandoc, nullAttr)
+import Text.Pandoc.Highlighting (Style, styleToCss, zenburn)
 import Text.Pandoc.Options (WriterOptions (..))
+import Text.Pandoc.Walk (walk)
 
 main :: IO ()
 main = hakyll $ do
@@ -12,7 +14,7 @@ main = hakyll $ do
 
   -- Load all assets.
   match "assets/*" $ do
-    route   idRoute
+    route idRoute
     compile copyFileCompiler
 
   -- Create a stylesheet for syntax highlighting.
@@ -43,8 +45,9 @@ main = hakyll $ do
         >>= relativizeUrls
 
 pageTitleContext :: Context String
-pageTitleContext = field "title" (getResourceMetadata . itemIdentifier)
-                   <> defaultContext
+pageTitleContext =
+  field "title" (getResourceMetadata . itemIdentifier)
+    <> defaultContext
 
 -- | Build a `Context` for the list of all pages
 mkPagesContext :: [Item String] -> Context a
@@ -53,8 +56,8 @@ mkPagesContext = listField "pages" pageContext . pure
 -- | `Context` for linking a page
 pageContext :: Context a
 pageContext =
-  field "title" (getResourceMetadata . itemIdentifier) <>
-  field "url" (fmap (fromMaybe "No Route") . getRoute . itemIdentifier)
+  field "title" (getResourceMetadata . itemIdentifier)
+    <> field "url" (fmap (fromMaybe "No Route") . getRoute . itemIdentifier)
 
 getResourceMetadata :: MonadMetadata m => Identifier -> m String
 getResourceMetadata iden =
@@ -65,8 +68,22 @@ pandocCodeStyle = zenburn
 
 pandocCompiler' :: Compiler (Item String)
 pandocCompiler' =
-  pandocCompilerWith
+  pandocCompilerWithTransform
     defaultHakyllReaderOptions
     defaultHakyllWriterOptions
       { writerHighlightStyle = Just pandocCodeStyle
       }
+    addSectionLinks
+  where
+    addSectionLinks :: Pandoc -> Pandoc
+    addSectionLinks = walk f
+      where
+        f :: Block -> Block
+        f (Header n attr@(idAttr, _, _) inlines)
+          | n > 1 && any containsString inlines = Header n attr [link]
+          where
+            link = Link nullAttr inlines ("#" <> idAttr, "")
+        f x = x
+        containsString :: Inline -> Bool
+        containsString (Str _) = True
+        containsString _ = False

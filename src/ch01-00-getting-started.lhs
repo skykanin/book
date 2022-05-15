@@ -2,10 +2,9 @@
 title: Getting Started
 ---
 
-Heading h1
-=========
-
-Here is some text from "getting started!!"
+[comment]: Heading h1
+[comment]: =========
+[comment]: Here is some text from "getting started!!"
 
 Heading h2
 ---------

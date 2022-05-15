@@ -32,6 +32,7 @@ executable book
     build-depends:    base ^>= 4.16.0.0
                     , hakyll ^>= 4.15.1.1
                     , pandoc ^>= 2.18
+                    , pandoc-types ^>= 1.22
 
     hs-source-dirs:   app
     ghc-options:      -threaded
